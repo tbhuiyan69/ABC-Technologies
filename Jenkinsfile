@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven "Maven 3.8.6"
+    }
 
     stages {
         stage('Fetch Repository') {
@@ -7,7 +10,14 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/tbhuiyan69/ABC-Technologies.git'
             }
         }
-
+        
+        stage('Build') {
+            steps {
+                sh "mvn clean package -DskipTests=true"
+                archiveArtifacts 'target/*.jar'
+            }
+        }
+        
         stage('Test') {
             steps {
                 // Add steps to run tests here
@@ -23,4 +33,5 @@ pipeline {
         }
     }
 }
+
 
