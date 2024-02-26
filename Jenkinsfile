@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Fetch Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/tbhuiyan69/ABC-Technologies.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 // Add steps to build your project here
@@ -24,3 +30,4 @@ pipeline {
         }
     }
 }
+
