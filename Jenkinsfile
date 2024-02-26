@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Add steps to build your project here
-                echo 'Building the project...'
+                git 'https://github.com/tbhuiyan69/ABC-Technologies.git'
             }
         }
 
